@@ -1,0 +1,35 @@
+.product {
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+  align-items: center;
+  background-color: antiquewhite;
+  width: 80%;
+  height: 100px;
+  margin: 10px auto;
+  border: 2px solid rgb(207, 212, 55);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px gray;
+}
+.product_img {
+  width: 70px;
+  height: 70px;
+}
+.product_quantity {
+  width: 20px;
+  margin-bottom: 5px;
+}
+
+.product_description {
+  margin: 0;
+}
+.product_name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.product_descr_short {
+  margin-bottom: 5px;
+}
+.product_delete {
+  width: 30px;
+}
