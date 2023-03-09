@@ -17,7 +17,7 @@ function Add_item_modal(props) {
 
   const newProductSave = (ev) => {
     ev.preventDefault();
-    console.log(newItem);
+    props.add_product(newItem);
     props.new_modal(false);
   };
   const newProductClose = (ev) => {

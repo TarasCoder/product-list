@@ -1,6 +1,6 @@
 .product {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: left;
   align-items: center;
   background-color: antiquewhite;
@@ -14,14 +14,19 @@
 .product_img {
   width: 70px;
   height: 70px;
+  margin-left: 10px;
+}
+.product_quantity_block {
+  margin: 0 12px;
+  text-align: center;
 }
 .product_quantity {
   width: 20px;
   margin-bottom: 5px;
 }
-
 .product_description {
-  margin: 0;
+  flex-grow: 1;
+  padding: 0 10px;
 }
 .product_name {
   font-size: 20px;
@@ -33,4 +38,5 @@
 .product_delete {
   width: 30px;
   cursor: pointer;
+  margin-right: 10px;
 }
