@@ -32,4 +32,5 @@
 }
 .product_delete {
   width: 30px;
+  cursor: pointer;
 }

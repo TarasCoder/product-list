@@ -5,10 +5,12 @@ import remove from "../../images/trash.png";
 import "./Product.css";
 
 function Product() {
+
+
   return (
     <div className="product">
       <img className="product_img" src={packageImg} alt="product_name" />
-      <div class="product_quantity_block">
+      <div className="product_quantity_block">
         <img className="product_quantity" src={quantity} alt="quantity" />
         <p>15</p>
       </div>
