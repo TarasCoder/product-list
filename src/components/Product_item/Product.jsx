@@ -1,10 +1,13 @@
 import React from "react";
-import tempBox from "../../images/package.png"
+import tempBox from "../../images/package.png";
 import quantity from "../../images/quantity.png";
 import remove from "../../images/trash.png";
 import "./Product.css";
 
 function Product(props) {
+  const handleDelete = () => {
+    props.deleteProduct(props.id);
+  };
 
   return (
     <div className="product">
@@ -20,7 +23,12 @@ function Product(props) {
           show more
         </a>
       </div>
-      <img className="product_delete" src={remove} alt="delete" />
+      <img
+        className="product_delete"
+        src={remove}
+        alt="delete"
+        onClick={handleDelete}
+      />
     </div>
   );
 }

@@ -18,6 +18,13 @@ function App() {
   const closeModal = () => {
     setNewProductIsOpen(false);
   };
+  const deleteProduct = (id) => {
+    setProducts(() => {
+      return products.filter((item) => {
+        return item.id !== id;
+      });
+    });
+  };
 
   return (
     <div className="App">
@@ -30,7 +37,12 @@ function App() {
           <AddModal new_modal={newProduct} add_product={addProduct} />
         )}
         {products.map((item) => (
-          <Product item={item} />
+          <Product
+            item={item}
+            key={item.key}
+            id={item.id}
+            deleteProduct={deleteProduct}
+          />
         ))}
       </div>
       <Attribution />

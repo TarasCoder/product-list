@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import uuid from "react-uuid";
 import "./Add_item_modal.css";
 
 function Add_item_modal(props) {
+  let uniqueKey = uuid();
+
   const [newItem, setNewItem] = useState({
+    id: "",
+    key: "",
     name: "",
     description: "",
     quantity: "",
@@ -12,11 +17,13 @@ function Add_item_modal(props) {
     setNewItem((prev) => ({
       ...prev,
       [ev.target.name]: ev.target.value,
+      id: uniqueKey,
+      key: uniqueKey,
     }));
   };
 
-  const newProductSave = (ev) => {
-    ev.preventDefault();
+  const newProductSave = () => {
+    // ev.preventDefault();
     props.add_product(newItem);
     props.new_modal(false);
   };
@@ -27,7 +34,7 @@ function Add_item_modal(props) {
   return (
     <div className="add_modal">
       <h2 className="modal_caption">NEW PRODUCT</h2>
-      <form className="modal_form">
+      <form onSubmit={newProductSave} className="modal_form">
         {/* Name input */}
         <div className="modal_input_block">
           <label htmlFor="name" className="modal_label">
@@ -39,6 +46,7 @@ function Add_item_modal(props) {
             className="modal_input"
             value={newItem.name}
             onChange={handleInput}
+            required
           />
         </div>
         {/* Quantity input */}
@@ -52,6 +60,7 @@ function Add_item_modal(props) {
             className="modal_input"
             value={newItem.quantity}
             onChange={handleInput}
+            required
           />
         </div>
         {/* Description input */}
@@ -65,6 +74,7 @@ function Add_item_modal(props) {
             className="modal_input"
             value={newItem.description}
             onChange={handleInput}
+            required
           />
         </div>
         {/* Image input */}
@@ -74,7 +84,7 @@ function Add_item_modal(props) {
           </label>
           <input
             name="image"
-            type="text"
+            type="file"
             className="modal_input"
             value={newItem.image}
             onChange={handleInput}
@@ -82,10 +92,10 @@ function Add_item_modal(props) {
         </div>
 
         <div className="modal_buttons">
-          <button onClick={newProductSave} className="btn_save">
+          <button type="submit" className="btn_save">
             Save
           </button>
-          <button onClick={newProductClose} className="btn_close">
+          <button type="button" onClick={newProductClose} className="btn_close">
             Close
           </button>
         </div>
