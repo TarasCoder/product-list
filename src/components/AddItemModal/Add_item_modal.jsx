@@ -68,7 +68,7 @@ function Add_item_modal(props) {
           </label>
           <input
             name="quantity"
-            type="text"
+            type="number"
             className="modal_input"
             value={newItem.quantity}
             onChange={handleInput}
