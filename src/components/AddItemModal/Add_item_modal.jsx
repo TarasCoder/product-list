@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import uuid from "react-uuid";
 import "./Add_item_modal.css";
 
 function Add_item_modal(props) {
   let uniqueKey = uuid();
+
+  const [imageUrl, setImageUrl] = useState(null);
 
   const [newItem, setNewItem] = useState({
     id: "",
@@ -13,6 +15,18 @@ function Add_item_modal(props) {
     quantity: "",
     image: "",
   });
+
+  useEffect(() => {
+    setNewItem((prev) => ({
+      ...prev,
+      image: imageUrl,
+    }));
+  }, [imageUrl]);
+
+  const handleFileInputChange = (event) => {
+    const imageUrlTemp = URL.createObjectURL(event.target.files[0]);
+    setImageUrl(imageUrlTemp);
+  };
   const handleInput = (ev) => {
     setNewItem((prev) => ({
       ...prev,
@@ -21,9 +35,7 @@ function Add_item_modal(props) {
       key: uniqueKey,
     }));
   };
-
   const newProductSave = () => {
-    // ev.preventDefault();
     props.add_product(newItem);
     props.new_modal(false);
   };
@@ -85,10 +97,11 @@ function Add_item_modal(props) {
           <input
             name="image"
             type="file"
-            className="modal_input"
-            value={newItem.image}
-            onChange={handleInput}
+            className="modal_input modal_input_ava"
+            defaultValue={newItem.image}
+            onChange={handleFileInputChange}
           />
+          {imageUrl && <img src={imageUrl} alt="ava" className="modal_ava" />}
         </div>
 
         <div className="modal_buttons">

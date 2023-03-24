@@ -1,6 +1,7 @@
 .add_modal {
   width: 400px;
-  height: 300px;
+  /* height: 300px; */
+  height: 335px;
   border: 3px solid rgb(38, 205, 16);
   border-radius: 10px;
   background-color: rgb(247, 248, 187);
@@ -35,7 +36,8 @@
 .modal_input_block {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  /* align-items: baseline; */
+  align-items: center;
 }
 .modal_input {
   border-radius: 10px;
@@ -49,6 +51,14 @@
 }
 .modal_label {
   width: 100px;
+}
+.modal_ava {
+  width: 65px;
+}
+.modal_input_ava {
+  color: #f7f8bb;
+  width: 105px;
+  margin-right: 10px;
 }
 .btn_save {
   font-size: 16px;

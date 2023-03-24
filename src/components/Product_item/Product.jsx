@@ -8,10 +8,11 @@ function Product(props) {
   const handleDelete = () => {
     props.deleteProduct(props.id);
   };
+  console.log(props)
 
   return (
     <div className="product">
-      <img className="product_img" src={tempBox} alt="product_name" />
+      <img className="product_img" src={props.item.image || tempBox} alt="product_name" />
       <div className="product_quantity_block">
         <img className="product_quantity" src={quantity} alt="quantity" />
         <p>{props.item.quantity}</p>
