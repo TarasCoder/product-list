@@ -5,10 +5,10 @@
 }
 .main_block {
   width: 500px;
-  height: 70vh;
+  height: 73vh;
   margin: 0 auto;
   padding: 10px;
-  overflow: hidden;
+  overflow: auto;
   border-radius: 10px;
   box-shadow: 1px 1px 5px gray;
   background-color: rgb(13, 169, 117);

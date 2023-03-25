@@ -21,6 +21,7 @@ function Add_item_modal(props) {
       ...prev,
       image: imageUrl,
     }));
+    // localStorage.setItem(LS_PRODUCTS, JSON.stringify(newItem));
   }, [imageUrl]);
 
   const handleFileInputChange = (event) => {

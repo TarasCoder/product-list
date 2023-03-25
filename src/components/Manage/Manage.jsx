@@ -13,6 +13,7 @@ function Manage(props) {
           Sort by:
         </label>
         <select name="sort" id="sort">
+          <option value=""selected="true" disabled="disabled">-- Select --</option>
           <option value="name">Name</option>
           <option value="quantity">Quantity</option>
         </select>

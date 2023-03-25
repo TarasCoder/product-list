@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Product from "./components/Product_item/Product";
 import Manage from "./components/Manage/Manage";
@@ -6,8 +6,14 @@ import Attribution from "./components/Attribution/Attribution";
 import AddModal from "./components/AddItemModal/Add_item_modal";
 
 function App() {
+  const LS_PRODUCTS = "PRODUCTS";
+  let lsProducts = JSON.parse(localStorage.getItem(LS_PRODUCTS)) || [];
+  const [products, setProducts] = useState(lsProducts);
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
-  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem(LS_PRODUCTS, JSON.stringify(products));
+  }, [products]);
 
   const addProduct = (val) => {
     setProducts((prev) => [...prev, val]);
