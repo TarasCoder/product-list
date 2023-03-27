@@ -38,6 +38,9 @@ function App() {
       });
     });
   };
+  const dropDownStatus = (val) => {
+    setSelectedValue(val);
+  }
 
   return (
     <div className="App">
@@ -46,6 +49,7 @@ function App() {
         products={products}
         sortedState={saveSortedState}
         lsSorted={selectedValue}
+        dropDownStatus={dropDownStatus}
       />
       <div className="main_block">
         {/* MODALS BLOCK */}

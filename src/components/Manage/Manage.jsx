@@ -3,9 +3,6 @@ import { SORTED_BY } from "../../ConstNames";
 import "./Manage.css";
 
 function Manage(props) {
-  const [dropdown, setDropdown] = useState(props.lsSorted);
-
-console.log("dropdown in Manage was changed!", dropdown);
 
   const newProduct = () => {
     props.new_modal(true);
@@ -17,6 +14,7 @@ console.log("dropdown in Manage was changed!", dropdown);
       .slice()
       .sort((a, b) => a.name.localeCompare(b.name));
     props.sortedState(sortedArr);
+    props.dropDownStatus("name");
     localStorage.setItem(SORTED_BY, "name");
   };
 
@@ -26,11 +24,11 @@ console.log("dropdown in Manage was changed!", dropdown);
       .slice()
       .sort((a, b) => a.quantity - b.quantity);
     props.sortedState(sortedArr);
+    props.dropDownStatus("quantity");
     localStorage.setItem(SORTED_BY, "quantity");
   };
   const handleSort = (event) => {
     let selectOption = event.target.value;
-    setDropdown(selectOption);
     if (selectOption === "name") {
       sortByName();
     } else if (selectOption === "quantity") {
