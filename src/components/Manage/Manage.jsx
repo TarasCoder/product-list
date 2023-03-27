@@ -3,7 +3,9 @@ import { SORTED_BY } from "../../ConstNames";
 import "./Manage.css";
 
 function Manage(props) {
-  const [dropdown, setDropdown] = useState(props.isSorted || "");
+  const [dropdown, setDropdown] = useState(props.lsSorted);
+
+console.log("dropdown in Manage was changed!", dropdown);
 
   const newProduct = () => {
     props.new_modal(true);
@@ -45,14 +47,14 @@ function Manage(props) {
         <label className="sorting_label" htmlFor="sort">
           Sort by:
         </label>
-        <select name="sort" id="sort" onChange={handleSort} value={dropdown}>
+        <select name="sort" id="sort" onChange={handleSort} value={props.lsSorted}>
           <option value="" disabled>
             -- Select --
           </option>
-          <option value="name" onChange={sortByName}>
+          <option value="name">
             Name
           </option>
-          <option value="quantity" onChange={sortByQuantity}>
+          <option value="quantity">
             Quantity
           </option>
         </select>

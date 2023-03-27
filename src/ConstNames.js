@@ -1,2 +1,2 @@
 export const LS_PRODUCTS = "PRODUCTS";
-export const SORTED_BY = "IS_SORTED";
+export const SORTED_BY = "SORTED_BY";

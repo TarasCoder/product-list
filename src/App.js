@@ -3,13 +3,13 @@ import "./App.css";
 import Product from "./components/Product_item/Product";
 import Manage from "./components/Manage/Manage";
 import Attribution from "./components/Attribution/Attribution";
-import AddModal from "./components/AddItemModal/Add_item_modal";
-import {LS_PRODUCTS, SORTED_BY} from "./ConstNames";
+import AddItemModal from "./components/Modals/AddItemModal/Add_item_modal";
+import RemoveItemModal from "./components/Modals/RemoveItemModal/RemoveItemModal";
+import { LS_PRODUCTS, SORTED_BY } from "./ConstNames";
 
 function App() {
-
   let lsProducts = JSON.parse(localStorage.getItem(LS_PRODUCTS)) || [];
-  let lsSorted = localStorage.getItem(SORTED_BY) || "";
+  const [selectedValue, setSelectedValue] = useState(localStorage.getItem(SORTED_BY) || "");
   const [products, setProducts] = useState(lsProducts);
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
 
@@ -22,6 +22,8 @@ function App() {
   };
   const addProduct = (val) => {
     setProducts((prev) => [...prev, val]);
+    setSelectedValue("");
+    localStorage.setItem(SORTED_BY, "");
   };
   const newProduct = (val) => {
     setNewProductIsOpen(val);
@@ -43,15 +45,18 @@ function App() {
         new_modal={newProduct}
         products={products}
         sortedState={saveSortedState}
-        isSorted={lsSorted}
+        lsSorted={selectedValue}
       />
       <div className="main_block">
+        {/* MODALS BLOCK */}
+        {/* New item modal */}
         {newProductIsOpen && (
           <div className="modal_overlay" onClick={closeModal} />
         )}
         {newProductIsOpen && (
-          <AddModal new_modal={newProduct} add_product={addProduct} />
+          <AddItemModal new_modal={newProduct} add_product={addProduct} />
         )}
+
         {products.map((item) => (
           <Product
             item={item}

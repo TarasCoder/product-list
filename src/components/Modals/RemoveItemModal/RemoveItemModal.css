@@ -1,0 +1,14 @@
+.add_modal_modify {
+  width: 320px;
+  height: 125px;
+  position: absolute;
+  top: 40px;
+  left: 100px;
+}
+.modal_caption_modify {
+  text-decoration: none;
+  margin-top: 17px;
+}
+.modal_buttons_modify button {
+  width: 120px;
+}
