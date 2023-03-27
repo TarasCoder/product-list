@@ -4,10 +4,12 @@ import Product from "./components/Product_item/Product";
 import Manage from "./components/Manage/Manage";
 import Attribution from "./components/Attribution/Attribution";
 import AddModal from "./components/AddItemModal/Add_item_modal";
+import {LS_PRODUCTS, SORTED_BY} from "./ConstNames";
 
 function App() {
-  const LS_PRODUCTS = "PRODUCTS";
+
   let lsProducts = JSON.parse(localStorage.getItem(LS_PRODUCTS)) || [];
+  let lsSorted = localStorage.getItem(SORTED_BY) || "";
   const [products, setProducts] = useState(lsProducts);
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
 
@@ -15,6 +17,9 @@ function App() {
     localStorage.setItem(LS_PRODUCTS, JSON.stringify(products));
   }, [products]);
 
+  const saveSortedState = (newState) => {
+    setProducts(newState);
+  };
   const addProduct = (val) => {
     setProducts((prev) => [...prev, val]);
   };
@@ -34,7 +39,12 @@ function App() {
 
   return (
     <div className="App">
-      <Manage new_modal={newProduct} />
+      <Manage
+        new_modal={newProduct}
+        products={products}
+        sortedState={saveSortedState}
+        isSorted={lsSorted}
+      />
       <div className="main_block">
         {newProductIsOpen && (
           <div className="modal_overlay" onClick={closeModal} />
