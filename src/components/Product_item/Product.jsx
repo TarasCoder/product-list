@@ -5,9 +5,16 @@ import remove from "../../images/trash.png";
 import "./Product.css";
 
 function Product(props) {
+  const NUM_OF_SYMBOLS = 20;
+  let description = props.item.description;
+  let descriptionSliced = description.slice(0, 30);
+  let continueSighn = description.length > NUM_OF_SYMBOLS ? "..." : "";
+
+  const show_more = () => {
+    props.show_more(props.id);
+  };
   const handleDelete = () => {
     props.deleteProductModalOpen(props.id);
-    // props.deleteProduct(props.id);
   };
 
   return (
@@ -23,10 +30,16 @@ function Product(props) {
       </div>
       <div className="product_description">
         <h2 className="product_name">{props.item.name}</h2>
-        <p className="product_descr_short">{props.item.description}</p>
-        <a className="product_descr_long" href="#">
-          show more
-        </a>
+        <p className="product_descr_short">
+          {description.length < NUM_OF_SYMBOLS
+            ? description
+            : descriptionSliced + continueSighn}
+        </p>
+        {description.length > NUM_OF_SYMBOLS && (
+          <a className="product_descr_long" href="#" onClick={show_more}>
+            show more
+          </a>
+        )}
       </div>
       <img
         className="product_delete"
