@@ -9,10 +9,13 @@ import { LS_PRODUCTS, SORTED_BY } from "./ConstNames";
 
 function App() {
   let lsProducts = JSON.parse(localStorage.getItem(LS_PRODUCTS)) || [];
-  const [selectedValue, setSelectedValue] = useState(localStorage.getItem(SORTED_BY) || "");
+  const [selectedValue, setSelectedValue] = useState(
+    localStorage.getItem(SORTED_BY) || ""
+  );
   const [products, setProducts] = useState(lsProducts);
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
-  const [deleteConfModal, setDeleteConfModal] = useState(false);
+  const [deleteConfModal, setDeleteConfOpen] = useState(false);
+  const [deleteItemID, setDeleteItemID] = useState("");
 
   useEffect(() => {
     localStorage.setItem(LS_PRODUCTS, JSON.stringify(products));
@@ -41,16 +44,18 @@ function App() {
   };
   const dropDownStatus = (val) => {
     setSelectedValue(val);
-  }
-  const deleteProductModal = () => {
-    setDeleteConfModal(true);
-  }
-  const deleteProductModalClose = () => {
-    setDeleteConfModal(false);
-  }
-  const confirmation_modal = () => {
-    setDeleteConfModal(false);
-  }
+  };
+  const confirm_delete_item = () => {
+    deleteProduct(deleteItemID);
+    setDeleteConfOpen(false);
+  };
+  const deleteProductModalOpen = (id) => {
+    setDeleteItemID(id);
+    setDeleteConfOpen(true);
+  };
+  const cancel_action = () => {
+    setDeleteConfOpen(false);
+  };
 
   return (
     <div className="App">
@@ -72,10 +77,13 @@ function App() {
         )}
         {/* Confirmation of deleting modal */}
         {deleteConfModal && (
-          <div className="modal_overlay" onClick={deleteProductModalClose} />
+          <div className="modal_overlay" onClick={cancel_action} />
         )}
         {deleteConfModal && (
-          <RemoveItemModal confirmation_modal={confirmation_modal} />
+          <RemoveItemModal
+            confirm_del={confirm_delete_item}
+            cancel_action={cancel_action}
+          />
         )}
 
         {products.map((item) => (
@@ -84,7 +92,7 @@ function App() {
             key={item.key}
             id={item.id}
             deleteProduct={deleteProduct}
-            deleteProductModal={deleteProductModal}
+            deleteProductModalOpen={deleteProductModalOpen}
           />
         ))}
       </div>

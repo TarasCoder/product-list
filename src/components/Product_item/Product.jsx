@@ -6,7 +6,7 @@ import "./Product.css";
 
 function Product(props) {
   const handleDelete = () => {
-    props.deleteProductModal();
+    props.deleteProductModalOpen(props.id);
     // props.deleteProduct(props.id);
   };
 
