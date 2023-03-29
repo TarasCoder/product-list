@@ -13,7 +13,7 @@
   box-shadow: 1px 1px 5px gray;
   background-color: rgb(13, 169, 117);
   border: 10px solid rgb(61, 188, 61);
-  position: relative;
+  /* position: relative; */
 }
 /* Idea and styled by cgpt */
 .modal_overlay {

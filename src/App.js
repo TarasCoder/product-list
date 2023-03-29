@@ -12,6 +12,7 @@ function App() {
   const [selectedValue, setSelectedValue] = useState(localStorage.getItem(SORTED_BY) || "");
   const [products, setProducts] = useState(lsProducts);
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
+  const [deleteConfModal, setDeleteConfModal] = useState(false);
 
   useEffect(() => {
     localStorage.setItem(LS_PRODUCTS, JSON.stringify(products));
@@ -41,6 +42,15 @@ function App() {
   const dropDownStatus = (val) => {
     setSelectedValue(val);
   }
+  const deleteProductModal = () => {
+    setDeleteConfModal(true);
+  }
+  const deleteProductModalClose = () => {
+    setDeleteConfModal(false);
+  }
+  const confirmation_modal = () => {
+    setDeleteConfModal(false);
+  }
 
   return (
     <div className="App">
@@ -60,6 +70,13 @@ function App() {
         {newProductIsOpen && (
           <AddItemModal new_modal={newProduct} add_product={addProduct} />
         )}
+        {/* Confirmation of deleting modal */}
+        {deleteConfModal && (
+          <div className="modal_overlay" onClick={deleteProductModalClose} />
+        )}
+        {deleteConfModal && (
+          <RemoveItemModal confirmation_modal={confirmation_modal} />
+        )}
 
         {products.map((item) => (
           <Product
@@ -67,6 +84,7 @@ function App() {
             key={item.key}
             id={item.id}
             deleteProduct={deleteProduct}
+            deleteProductModal={deleteProductModal}
           />
         ))}
       </div>

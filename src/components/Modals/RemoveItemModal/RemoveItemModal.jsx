@@ -3,10 +3,10 @@ import "./RemoveItemModal.css";
 
 function RemoveItemModal(props) {
   const confirmRemoveItem = () => {
-    props.confirmation_modal(true);
+    console.log("Remove item!");
   };
   const cancelAction = () => {
-    props.confirmation_modal(false);
+    props.confirmation_modal();
   };
 
   return (
