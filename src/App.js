@@ -6,6 +6,7 @@ import Attribution from "./components/Attribution/Attribution";
 import AddItemModal from "./components/Modals/AddItemModal/Add_item_modal";
 import RemoveItemModal from "./components/Modals/RemoveItemModal/RemoveItemModal";
 import ReadMore from "./components/Modals/ReadMore/ReadMore";
+import Pagination from "./components/Pagination/Pagination";
 import { LS_PRODUCTS, SORTED_BY } from "./ConstNames";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     localStorage.getItem(SORTED_BY) || ""
   );
   const [products, setProducts] = useState(lsProducts);
+  const [productsPagination, setProductsPagination] = useState(products);
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
   const [deleteConfModal, setDeleteConfOpen] = useState(false);
   const [readMoreModal, setReadMoreModal] = useState(false);
@@ -85,6 +87,10 @@ function App() {
     setDeleteConfOpen(false);
   };
 
+  const paginationGo = (paginatedArr) => {
+    setProductsPagination(paginatedArr);
+  };
+
   return (
     <div className="App">
       <Manage
@@ -121,7 +127,7 @@ function App() {
           <ReadMore closeReadMore={closeReadMore} readMore={readMore} />
         )}
 
-        {products.map((item) => (
+        {productsPagination.map((item) => (
           <Product
             item={item}
             key={item.key}
@@ -132,6 +138,7 @@ function App() {
           />
         ))}
       </div>
+      <Pagination products={products} paginate={paginationGo} />
       <Attribution />
     </div>
   );
