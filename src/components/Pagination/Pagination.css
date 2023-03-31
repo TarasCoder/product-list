@@ -12,3 +12,7 @@
   cursor: pointer;
   box-shadow: 1px 1px 5px grey;
 }
+.page-active {
+  color: #045f13;
+  background-color: #fff;
+}

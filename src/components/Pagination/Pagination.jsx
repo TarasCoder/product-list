@@ -16,11 +16,25 @@ function Pagination({ products, paginate }) {
   }
 
   useEffect(() => {
+    const firstPageElement = document.querySelector(".page");
+    firstPageElement.classList.add("page-active");
+  }, []);
+
+  useEffect(() => {
     paginate(currentPortion);
   }, [currentPage, products]);
 
+  const highlightActivePage = (index) => {
+    const element = document.querySelector(".page-active");
+    if (element !== null) {
+      element.classList.remove("page-active");
+    }
+    index.target.classList.add("page-active");
+  };
+
   const paginateIt = (index) => {
     setCurrentPage(index.target.textContent);
+    highlightActivePage(index);
   };
 
   return (
