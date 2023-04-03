@@ -10,6 +10,10 @@ function Product(props) {
   let descriptionSliced = description.slice(0, 30);
   let continueSighn = description.length > NUM_OF_SYMBOLS ? "..." : "";
 
+  const openProductDetailsAction = () => {
+    props.openProductDetails();
+    props.productDetailsItem(props.item);
+  };
   const show_more = () => {
     props.show_more(props.id);
   };
@@ -18,7 +22,7 @@ function Product(props) {
   };
 
   return (
-    <div className="product">
+    <div className="product" onClick={openProductDetailsAction}>
       <img
         className="product_img"
         src={props.item.image || tempBox}
@@ -35,11 +39,12 @@ function Product(props) {
             ? description
             : descriptionSliced + continueSighn}
         </p>
-        {description.length > NUM_OF_SYMBOLS && (
+        {/* Displaying "show more link on the each product item" */}
+        {/* {description.length > NUM_OF_SYMBOLS && (
           <a className="product_descr_long" href="#" onClick={show_more}>
             show more
           </a>
-        )}
+        )} */}
       </div>
       <img
         className="product_delete"

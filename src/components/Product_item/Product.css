@@ -10,6 +10,7 @@
   border: 2px solid rgb(207, 212, 55);
   border-radius: 5px;
   box-shadow: 1px 1px 5px gray;
+  cursor: pointer;
 }
 .product_img {
   width: 70px;

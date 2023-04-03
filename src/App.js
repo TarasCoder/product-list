@@ -6,6 +6,7 @@ import Attribution from "./components/Attribution/Attribution";
 import AddItemModal from "./components/Modals/AddItemModal/Add_item_modal";
 import RemoveItemModal from "./components/Modals/RemoveItemModal/RemoveItemModal";
 import ReadMore from "./components/Modals/ReadMore/ReadMore";
+import ProductDetails from "./components/Modals/ProductDetails/ProductDetails";
 import Pagination from "./components/Pagination/Pagination";
 import { LS_PRODUCTS, SORTED_BY } from "./ConstNames";
 
@@ -19,8 +20,10 @@ function App() {
   const [newProductIsOpen, setNewProductIsOpen] = useState(false);
   const [deleteConfModal, setDeleteConfOpen] = useState(false);
   const [readMoreModal, setReadMoreModal] = useState(false);
+  const [productDetails, setProductDetails] = useState(false);
   const [readMore, setReadMore] = useState("");
   const [deleteItemID, setDeleteItemID] = useState("");
+  const [productDetailsItemData, setProductDetailsItemData] = useState("");
 
   // Rewrite LS when state of products is changed
   useEffect(() => {
@@ -90,6 +93,15 @@ function App() {
   const paginationGo = (paginatedArr) => {
     setProductsPagination(paginatedArr);
   };
+  const productDetailsItem = (item) => {
+    setProductDetailsItemData(item);
+  };
+  const openProductDetails = () => {
+    setProductDetails(true);
+  };
+  const closeProductDetails = () => {
+    setProductDetails(false);
+  };
 
   return (
     <div className="App">
@@ -102,6 +114,17 @@ function App() {
       />
       <div className="main_block">
         {/* MODALS BLOCK */}
+        {/* New item modal */}
+        {productDetails && (
+          <div className="modal_overlay" onClick={closeProductDetails} />
+        )}
+        {productDetails && (
+          <ProductDetails
+            closeProductDetails={closeProductDetails}
+            productDetailsItemData={productDetailsItemData}
+            show_more={show_more}
+          />
+        )}
         {/* New item modal */}
         {newProductIsOpen && (
           <div className="modal_overlay" onClick={closeModal} />
@@ -135,6 +158,8 @@ function App() {
             show_more={show_more}
             deleteProduct={deleteProduct}
             deleteProductModalOpen={deleteProductModalOpen}
+            openProductDetails={openProductDetails}
+            productDetailsItem={productDetailsItem}
           />
         ))}
       </div>

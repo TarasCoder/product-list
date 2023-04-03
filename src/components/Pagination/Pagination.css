@@ -15,4 +15,6 @@
 .page-active {
   color: #045f13;
   background-color: #fff;
+  font-weight: 600;
+  border: 2px solid rgb(123, 206, 117);
 }
