@@ -93,3 +93,20 @@
   background-color: #f04406d6;
   color: #fff;
 }
+
+.modal_label_itemData_comments {
+  display: flex;
+  align-items: center;
+}
+.itemDataLengthComments {
+  margin-right: 20px;
+}
+.itemDataComments {
+  text-align: left;
+  margin: 0 0 5px;
+  cursor: pointer;
+  transition: color 0.5s ease;
+}
+.itemDataComments:hover{
+  color: rgb(11, 180, 31);
+}

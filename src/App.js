@@ -7,6 +7,8 @@ import AddItemModal from "./components/Modals/AddItemModal/Add_item_modal";
 import RemoveItemModal from "./components/Modals/RemoveItemModal/RemoveItemModal";
 import ReadMore from "./components/Modals/ReadMore/ReadMore";
 import ProductDetails from "./components/Modals/ProductDetails/ProductDetails";
+import AddComments from "./components/Modals/Comments/AddComments/AddComments";
+import ReadComments from "./components/Modals/Comments/ReadComments/ReadComments";
 import Pagination from "./components/Pagination/Pagination";
 import { LS_PRODUCTS, SORTED_BY } from "./ConstNames";
 
@@ -21,6 +23,9 @@ function App() {
   const [deleteConfModal, setDeleteConfOpen] = useState(false);
   const [readMoreModal, setReadMoreModal] = useState(false);
   const [productDetails, setProductDetails] = useState(false);
+  const [commentsRead, setCommentsRead] = useState(false);
+  const [commentsAdd, setCommentsAdd] = useState(false);
+  const [currentComments, setCurrentComments] = useState([]);
   const [readMore, setReadMore] = useState("");
   const [deleteItemID, setDeleteItemID] = useState("");
   const [productDetailsItemData, setProductDetailsItemData] = useState("");
@@ -102,6 +107,24 @@ function App() {
   const closeProductDetails = () => {
     setProductDetails(false);
   };
+  const openAddComments = () => {
+    setCommentsAdd(true);
+  };
+  const openReadComments = (comments) => {
+    setCommentsRead(true);
+    setCurrentComments(comments);
+  };
+  const closeReadComments = () => {
+    setCommentsRead(false);
+  };
+  const closeAddComments = () => {
+    setCommentsAdd(false);
+  };
+  const addComment = (comment) => {
+    const product = products.find((p) => p.id === productDetailsItemData.id);
+    product.comments.push(comment);
+    setProducts((prev) => [...prev]);
+  };
 
   return (
     <div className="App">
@@ -123,9 +146,10 @@ function App() {
             closeProductDetails={closeProductDetails}
             productDetailsItemData={productDetailsItemData}
             show_more={show_more}
+            openAddComments={openAddComments}
+            openReadComments={openReadComments}
             deleteProduct={deleteProduct}
             deleteProductModalOpen={deleteProductModalOpen}
-
           />
         )}
         {/* New item modal */}
@@ -135,6 +159,29 @@ function App() {
         {newProductIsOpen && (
           <AddItemModal new_modal={newProduct} add_product={addProduct} />
         )}
+
+        {/* Adding new comment modal */}
+        {commentsAdd && (
+          <div className="modal_overlay" onClick={closeAddComments} />
+        )}
+        {commentsAdd && (
+          <AddComments
+            closeAddComments={closeAddComments}
+            addComment={addComment}
+          />
+        )}
+
+        {/* Reading comments modal */}
+        {commentsRead && (
+          <div className="modal_overlay" onClick={closeReadComments} />
+        )}
+        {commentsRead && (
+          <ReadComments
+            closeReadComments={closeReadComments}
+            comments={currentComments}
+          />
+        )}
+
         {/* Confirmation of deleting modal */}
         {deleteConfModal && (
           <div className="modal_overlay" onClick={cancel_action} />
@@ -146,6 +193,7 @@ function App() {
             closeProductDetails={closeProductDetails}
           />
         )}
+
         {/* Read more modal */}
         {readMoreModal && (
           <div className="modal_overlay" onClick={closeReadMore} />

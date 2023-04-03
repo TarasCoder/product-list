@@ -11,6 +11,12 @@ function ProductDetails(props) {
   const editMode = () => {
     console.log("Edit mode!");
   };
+  const addComment = () => {
+    props.openAddComments();
+  };
+  const readComment = () => {
+    props.openReadComments(itemData.comments);
+  };
 
   const handleDelete = () => {
     props.deleteProductModalOpen(itemData.id);
@@ -111,8 +117,12 @@ function ProductDetails(props) {
           <label htmlFor="comments" className="modal_label_itemData">
             Comments:
           </label>
-          <div className="modal_label_itemData modal_label_itemData_img">
-            <h4 className="itemData">{itemData.quantity}</h4>
+          <div className="modal_label_itemData modal_label_itemData_comments">
+            <h4 className="itemDataLengthComments">{itemData.comments.length}</h4>
+            <div>
+              <p className="itemDataComments" onClick={addComment}>add comment</p>
+              <p className="itemDataComments" onClick={readComment}>read comment(s)</p>
+            </div>
           </div>
           {/* <input
             name="image"

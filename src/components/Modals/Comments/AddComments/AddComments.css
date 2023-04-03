@@ -1,0 +1,12 @@
+.caption {
+    margin: 10px 0 20px;
+    font-size: 20px;
+    text-decoration: underline;
+}
+.txt-area-comment {
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    outline: none;
+}

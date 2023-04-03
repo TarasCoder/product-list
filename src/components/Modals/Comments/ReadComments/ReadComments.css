@@ -1,0 +1,9 @@
+.modal_readMore_caption {
+    margin: 0;
+    text-decoration: underline;
+}
+.modal_readMore {
+    height: fit-content;
+    padding: 15px;
+    margin: 0;
+}

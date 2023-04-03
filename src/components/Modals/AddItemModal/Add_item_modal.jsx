@@ -14,7 +14,7 @@ function Add_item_modal(props) {
     description: "",
     quantity: "",
     image: "",
-    comments: "",
+    comments: [],
   });
 
   useEffect(() => {
