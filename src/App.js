@@ -123,6 +123,9 @@ function App() {
             closeProductDetails={closeProductDetails}
             productDetailsItemData={productDetailsItemData}
             show_more={show_more}
+            deleteProduct={deleteProduct}
+            deleteProductModalOpen={deleteProductModalOpen}
+
           />
         )}
         {/* New item modal */}
@@ -140,6 +143,7 @@ function App() {
           <RemoveItemModal
             confirm_del={confirm_delete_item}
             cancel_action={cancel_action}
+            closeProductDetails={closeProductDetails}
           />
         )}
         {/* Read more modal */}
@@ -156,8 +160,8 @@ function App() {
             key={item.key}
             id={item.id}
             show_more={show_more}
-            deleteProduct={deleteProduct}
-            deleteProductModalOpen={deleteProductModalOpen}
+            // deleteProduct={deleteProduct}
+            // deleteProductModalOpen={deleteProductModalOpen}
             openProductDetails={openProductDetails}
             productDetailsItem={productDetailsItem}
           />

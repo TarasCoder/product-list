@@ -8,16 +8,25 @@ function ProductDetails(props) {
   const closeProductDetails = () => {
     props.closeProductDetails();
   };
+  const editMode = () => {
+    console.log("Edit mode!");
+  };
 
-  const NUM_OF_SYMBOLS = 20;
+  const handleDelete = () => {
+    props.deleteProductModalOpen(itemData.id);
+  };
+
+  const NUM_OF_SYMBOLS = 10;
+  const SYMBOLS_TO_DISPLAY = 30;
+
   let description = itemData.description;
-  let descriptionSliced = description.slice(0, 30);
+  let descriptionSliced = description.slice(0, SYMBOLS_TO_DISPLAY);
   let continueSighn = description.length > NUM_OF_SYMBOLS ? "..." : "";
   const show_more = () => {
     props.show_more(props.productDetailsItemData.id);
   };
   return (
-    <div className="add_modal add_modal_product_details">
+    <div className="add_modal_product_details">
       <h2 className="modal_caption">Product details:</h2>
       <div className="modal_form modal_form_product_details">
         {/* Name input */}
@@ -59,7 +68,11 @@ function ProductDetails(props) {
                 : descriptionSliced + continueSighn}
             </p>
             {description.length > NUM_OF_SYMBOLS && (
-              <a className="modal_label_itemData_description_link" href="#" onClick={show_more}>
+              <a
+                className="modal_label_itemData_description_link"
+                href="#"
+                onClick={show_more}
+              >
                 show more
               </a>
             )}
@@ -93,14 +106,32 @@ function ProductDetails(props) {
             value={}
           /> */}
         </div>
+        {/* Comments section */}
+        <div className="modal_input_block">
+          <label htmlFor="comments" className="modal_label_itemData">
+            Comments:
+          </label>
+          <div className="modal_label_itemData modal_label_itemData_img">
+            <h4 className="itemData">{itemData.quantity}</h4>
+          </div>
+          {/* <input
+            name="image"
+            type="file"
+            className="modal_input modal_input_ava"
+            value={}
+          /> */}
+        </div>
       </div>
-      <div className="modal_buttons modal_buttons_product_details">
-        {/* <button type="submit" className="btn_save">
-            Save
-          </button> */}
+      <div className="modal_buttons_product_details">
+        <button type="submit" className="btn_edit" onClick={editMode}>
+          Edit
+        </button>
+        <button type="button" className="btn_close" onClick={handleDelete}>
+          Delete
+        </button>
         <button
           type="button"
-          className="btn_close"
+          className="btn_closeDetails"
           onClick={closeProductDetails}
         >
           Close

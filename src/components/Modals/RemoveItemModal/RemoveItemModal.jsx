@@ -4,13 +4,14 @@ import "./RemoveItemModal.css";
 function RemoveItemModal(props) {
   const confirmRemoveItem = () => {
     props.confirm_del();
+    props.closeProductDetails();
   };
   const cancelAction = () => {
     props.cancel_action();
   };
 
   return (
-    <div className="add_modal add_modal_modify">
+    <div className="add_modal_modify">
       <h2 className="modal_caption modal_caption_modify">DELETE ITEM?</h2>
       <div className="modal_buttons modal_buttons_modify">
         <button

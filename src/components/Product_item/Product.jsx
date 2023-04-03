@@ -1,25 +1,27 @@
 import React from "react";
 import tempBox from "../../images/package.png";
 import quantity from "../../images/quantity.png";
-import remove from "../../images/trash.png";
+// import remove from "../../images/trash.png";
 import "./Product.css";
 
 function Product(props) {
   const NUM_OF_SYMBOLS = 20;
+  const SYMBOLS_TO_DISPLAY = 30;
+
   let description = props.item.description;
-  let descriptionSliced = description.slice(0, 30);
+  let descriptionSliced = description.slice(0, SYMBOLS_TO_DISPLAY);
   let continueSighn = description.length > NUM_OF_SYMBOLS ? "..." : "";
 
   const openProductDetailsAction = () => {
     props.openProductDetails();
     props.productDetailsItem(props.item);
   };
-  const show_more = () => {
-    props.show_more(props.id);
-  };
-  const handleDelete = () => {
-    props.deleteProductModalOpen(props.id);
-  };
+  // const show_more = () => {
+  //   props.show_more(props.id);
+  // };
+  // const handleDelete = () => {
+  //   props.deleteProductModalOpen(props.id);
+  // };
 
   return (
     <div className="product" onClick={openProductDetailsAction}>
@@ -46,12 +48,12 @@ function Product(props) {
           </a>
         )} */}
       </div>
-      <img
+      {/* <img
         className="product_delete"
         src={remove}
         alt="delete"
         onClick={handleDelete}
-      />
+      /> */}
     </div>
   );
 }
