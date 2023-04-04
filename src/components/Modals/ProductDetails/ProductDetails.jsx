@@ -3,15 +3,24 @@ import tempBox from "../../../images/package.png";
 import "./ProductDetails.css";
 
 function ProductDetails(props) {
-  const [editMode, setEditMode] = useState(false);
   const itemData = props.productDetailsItemData;
-  const ava = itemData.image == null ? tempBox : itemData.image;
+  const [editedObject, setEditedObject] = useState(itemData);
+  const [editMode, setEditMode] = useState(false);
+  const ava = editedObject.image == null ? tempBox : editedObject.image;
+
   const closeProductDetails = () => {
     props.closeProductDetails();
   };
   const saveEditedCard = () => {
-    console.log("Save edited card!");
     setEditMode(false);
+    props.updateProduct(editedObject);
+  };
+  const handleChange = (ev) => {
+    let changeKey = ev.target.name;
+    let newValue = ev.target.value;
+    setEditedObject((prev) => {
+      return { ...prev, [changeKey]: newValue };
+    });
   };
   const editCard = () => {
     setEditMode(true);
@@ -22,20 +31,20 @@ function ProductDetails(props) {
   const readComment = () => {
     props.openReadComments(itemData.comments);
   };
-
   const handleDelete = () => {
     props.deleteProductModalOpen(itemData.id);
   };
 
+  // Show more functionality
   const NUM_OF_SYMBOLS = 10;
   const SYMBOLS_TO_DISPLAY = 30;
-
-  let description = itemData.description;
+  let description = editedObject.description;
   let descriptionSliced = description.slice(0, SYMBOLS_TO_DISPLAY);
   let continueSighn = description.length > NUM_OF_SYMBOLS ? "..." : "";
   const show_more = () => {
     props.show_more(props.productDetailsItemData.id);
   };
+
   return (
     <div className="add_modal_product_details">
       <h2 className="modal_caption">Product details:</h2>
@@ -45,13 +54,14 @@ function ProductDetails(props) {
           <label htmlFor="name" className="modal_label_itemData">
             Name:
           </label>
-          {!editMode && <h4 className="itemData">{itemData.name}</h4>}
+          {!editMode && <h4 className="itemData">{editedObject.name}</h4>}
           {editMode && (
             <input
               name="name"
               type="text"
               className="modal_input"
-              value={itemData.name}
+              value={editedObject.name}
+              onChange={handleChange}
             />
           )}
         </div>
@@ -60,13 +70,14 @@ function ProductDetails(props) {
           <label htmlFor="quantity" className="modal_label_itemData">
             Quantity:
           </label>
-          {!editMode && <h4 className="itemData">{itemData.quantity}</h4>}
+          {!editMode && <h4 className="itemData">{editedObject.quantity}</h4>}
           {editMode && (
             <input
               name="quantity"
               type="number"
               className="modal_input"
-              value={itemData.quantity}
+              value={editedObject.quantity}
+              onChange={handleChange}
             />
           )}
         </div>
@@ -99,7 +110,8 @@ function ProductDetails(props) {
               name="description"
               type="text"
               className="modal_input"
-              value={itemData.description}
+              value={editedObject.description}
+              onChange={handleChange}
             />
           )}
         </div>
@@ -132,8 +144,9 @@ function ProductDetails(props) {
                 name="image"
                 type="file"
                 className="modal_input modal_input_ava"
-                value={itemData.image}
+                // value={editedObject.image}
               />
+              <img src={ava} alt="ava" className="modal_ava edit_ava_img" />
             </div>
           )}
         </div>

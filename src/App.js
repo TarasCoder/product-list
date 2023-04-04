@@ -98,6 +98,18 @@ function App() {
   const paginationGo = (paginatedArr) => {
     setProductsPagination(paginatedArr);
   };
+  const updateProduct = (item) => {
+    setProducts(prev => {
+      return prev.map(product=> {
+        if(product.id === item.id){
+          return item;
+        };
+        return product;
+      })
+    });
+    setSelectedValue("");
+    localStorage.setItem(SORTED_BY, "");
+  };
   const productDetailsItem = (item) => {
     setProductDetailsItemData(item);
   };
@@ -148,6 +160,7 @@ function App() {
             show_more={show_more}
             openAddComments={openAddComments}
             openReadComments={openReadComments}
+            updateProduct={updateProduct}
             deleteProduct={deleteProduct}
             deleteProductModalOpen={deleteProductModalOpen}
           />
