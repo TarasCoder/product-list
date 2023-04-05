@@ -99,7 +99,7 @@ function Add_item_modal(props) {
           <input
             name="image"
             type="file"
-            className="modal_input modal_input_ava"
+            className="modal_input_ava"
             defaultValue={newItem.image}
             onChange={handleFileInputChange}
           />

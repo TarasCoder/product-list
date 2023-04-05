@@ -148,7 +148,7 @@ function ProductDetails(props) {
               <input
                 name="image"
                 type="file"
-                className="modal_input modal_input_ava"
+                className="modal_input_ava"
                 onChange={handleFileInputChange}
               />
               <img

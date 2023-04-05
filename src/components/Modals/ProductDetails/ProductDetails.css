@@ -116,3 +116,32 @@
 .edit_ava_img {
   margin-top: 10px;
 }
+.modal_input_ava {
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid rgb(75, 189, 46);
+  height: 20px;
+  padding: 5px 10px;
+  color: #f7f8bb;
+  width: 105px;
+  margin-right: 10px;
+}
+@media (max-width: 540px) {
+  .add_modal_product_details {
+    width: 350px;
+  }
+  .edit_ava {
+    width: 80%;
+  }
+}
+@media (max-width: 400px) {
+  .add_modal_product_details {
+    width: 300px;
+  }
+  .modal_buttons_product_details button {
+    width: 93px;
+  }
+  .edit_ava {
+    width: 100%;
+  }
+}
