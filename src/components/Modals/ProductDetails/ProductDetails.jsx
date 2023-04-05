@@ -9,8 +9,6 @@ function ProductDetails(props) {
   const [editMode, setEditMode] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
-  // let ava = editedObject.image == null ? tempBox : editedObject.image;
-
   useEffect(() => {
     if (imageUrl !== "") {
       setEditedObject((prev) => ({
@@ -131,25 +129,11 @@ function ProductDetails(props) {
             />
           )}
         </div>
-
-        {/* <div className="modal_input_block">
-          <label htmlFor="description" className="modal_label_itemData">
-            Description:
-          </label>
-          <h4 className="itemData">{itemData.description}</h4>
-          <input
-            name="description"
-            type="text"
-            className="modal_input"
-            value={}
-          />
-        </div> */}
         {/* Image input */}
         <div className="modal_input_block">
           <label htmlFor="image" className="modal_label_itemData">
             Image:
           </label>
-          {console.log("image before render ", editedObject.image)}
           {!editMode && (
             <div className="modal_label_itemData modal_label_itemData_img">
               <img
@@ -193,12 +177,6 @@ function ProductDetails(props) {
               </p>
             </div>
           </div>
-          {/* <input
-            name="image"
-            type="file"
-            className="modal_input modal_input_ava"
-            value={}
-          /> */}
         </div>
       </div>
       <div className="modal_buttons_product_details">

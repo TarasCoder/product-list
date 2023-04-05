@@ -17,7 +17,9 @@ function Pagination({ products, paginate }) {
 
   useEffect(() => {
     const firstPageElement = document.querySelector(".page");
-    firstPageElement.classList.add("page-active");
+    if(firstPageElement !== null){
+      firstPageElement.classList.add("page-active");
+    }
   }, []);
 
   useEffect(() => {
