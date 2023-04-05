@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import tempBox from "../../../images/package.png";
 import "./ProductDetails.css";
 
 function ProductDetails(props) {
   const itemData = props.productDetailsItemData;
-  const [editedObject, setEditedObject] = useState(itemData);
+  const copyOfItemData = Object.assign({}, itemData);
+  const [editedObject, setEditedObject] = useState(copyOfItemData);
   const [editMode, setEditMode] = useState(false);
-  const ava = editedObject.image == null ? tempBox : editedObject.image;
+  const [imageUrl, setImageUrl] = useState("");
 
+  // let ava = editedObject.image == null ? tempBox : editedObject.image;
+
+  useEffect(() => {
+    if (imageUrl !== "") {
+      setEditedObject((prev) => ({
+        ...prev,
+        image: imageUrl,
+      }));
+    }
+  }, [imageUrl]);
+
+  const handleFileInputChange = (event) => {
+    const imageUrlTemp = URL.createObjectURL(event.target.files[0]);
+    setImageUrl(imageUrlTemp);
+  };
   const closeProductDetails = () => {
     props.closeProductDetails();
   };
@@ -133,9 +149,14 @@ function ProductDetails(props) {
           <label htmlFor="image" className="modal_label_itemData">
             Image:
           </label>
+          {console.log("image before render ", editedObject.image)}
           {!editMode && (
             <div className="modal_label_itemData modal_label_itemData_img">
-              <img src={ava} alt="ava" className="modal_ava modal_ava" />
+              <img
+                src={editedObject.image || tempBox}
+                alt="ava"
+                className="modal_ava modal_ava"
+              />
             </div>
           )}
           {editMode && (
@@ -144,9 +165,13 @@ function ProductDetails(props) {
                 name="image"
                 type="file"
                 className="modal_input modal_input_ava"
-                // value={editedObject.image}
+                onChange={handleFileInputChange}
               />
-              <img src={ava} alt="ava" className="modal_ava edit_ava_img" />
+              <img
+                src={editedObject.image || tempBox}
+                alt="ava"
+                className="modal_ava edit_ava_img"
+              />
             </div>
           )}
         </div>
