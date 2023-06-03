@@ -7,18 +7,18 @@ So far I have finished 2 levels "base" and "middle".
 2) After the order is submitted, the data is saved to "Firestore database":
 ![image](https://github.com/TarasCoder/product-list/assets/66311545/beb5b7ec-3fe9-4dae-bced-52d9501efad2)
 3) all the products from each separate shop can be added to cart (after button is pressed "Alert" is showing product is added);
--as soon as you will choose product in one shop - all other will be blocked;
--the cart is saved to "Local Storage";
--you will be able to choose items from other shop only when you will delete all the products from the cart;
--based on previous comment obviously you can delete items from cart;
--there are 2 pages, that are changed without rerendering whole site;
--as soon as the product will be added to cart - total price will be changed (located on the cart page);
--as soon as you will change quantity on each product (inside cart), you will see dynamically changed price on changed card itself, and total price as well;
--you can not make quantity below 0;
--submit button is blocked till the moment you will add any product to cart;
--as soon as you will remove last product from the cart, submit button will be blocked;
--you can not send data to database when the inputs are not set;
--after order is sent, all fields, price, and cart are cleared;
+4) as soon as you will choose product in one shop - all other will be blocked;
+5 the cart is saved to "Local Storage";
+6 you will be able to choose items from other shop only when you will delete all the products from the cart;
+7 based on previous comment obviously you can delete items from cart;
+8 there are 2 pages, that are changed without rerendering whole site;
+9 as soon as the product will be added to cart - total price will be changed (located on the cart page);
+10 as soon as you will change quantity on each product (inside cart), you will see dynamically changed price on changed card itself, and total price as well;
+11 you can not make quantity below 0;
+12 submit button is blocked till the moment you will add any product to cart;
+13 as soon as you will remove last product from the cart, submit button will be blocked;
+14 you can not send data to database when the inputs are not set;
+15 after order is sent, all fields, price, and cart are cleared;
 
 WHAT SHOULD BE IMPROVED:
 
