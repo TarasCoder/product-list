@@ -3,10 +3,8 @@ Link to the deployed project: https://cart-project-5abcb.web.app/
 OVERWIEW:
 
 So far I have finished 2 levels "base" and "middle".
-
--the "shops" data is fatched from the "Firebase database";
-
--After the order is submitted, the data is saved to "Firestore database":
+1)the "shops" data is fatched from the "Firebase database";
+2)After the order is submitted, the data is saved to "Firestore database":
 ![image](https://github.com/TarasCoder/product-list/assets/66311545/beb5b7ec-3fe9-4dae-bced-52d9501efad2)
 -all the products from each separate shop can be added to cart (after button is pressed "Alert" is showing product is added);
 -as soon as you will choose product in one shop - all other will be blocked;
