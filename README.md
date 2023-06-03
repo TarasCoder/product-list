@@ -4,6 +4,7 @@
 
 So far I have finished 2 levels "base" and "middle".
 1) the "shops" data is fetched from the "Firebase database";
+![image](https://github.com/TarasCoder/product-list/assets/66311545/c15192b6-ce38-4f46-9cf7-05d94e6efd00)
 2) After the order is submitted, the data is saved to the "Firestore database":
 ![image](https://github.com/TarasCoder/product-list/assets/66311545/beb5b7ec-3fe9-4dae-bced-52d9501efad2)
 3) all the products from each separate shop can be added to the cart (after the button is pressed "Alert" is showing the product is added);
