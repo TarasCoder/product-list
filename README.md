@@ -1,6 +1,6 @@
-Link to the deployed project: https://cart-project-5abcb.web.app/
+# Link to the deployed project: https://cart-project-5abcb.web.app/
 
-OVERWIEW:
+# OVERWIEW:
 
 So far I have finished 2 levels "base" and "middle".
 1) the "shops" data is fatched from the "Firebase database";
@@ -20,14 +20,14 @@ So far I have finished 2 levels "base" and "middle".
 14) you can not send data to database when the inputs are not set;
 15) after order is sent, all fields, price, and cart are cleared;
 
-WHAT SHOULD BE IMPROVED:
+# WHAT SHOULD BE IMPROVED:
 
 1) add modal windows instead of alerts
 2) add more styling, so it will look great
 3) responsivnes
 4) add "advanced" level
 
-INSTRUCTIONS:
+# INSTRUCTIONS:
 
 1) DEPLOYING to firebase instructions:
 Step 0): npm run build (For React App)
@@ -45,7 +45,8 @@ from here: https://github.com/coreui/coreui-react/issues/55
 2) To run project locally download files, install dependencies "npm i", and run project using "npm run dev"
 
 
-REACT AUTO NOTES
+
+# REACT AUTO NOTES
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
