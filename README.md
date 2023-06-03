@@ -22,10 +22,10 @@ So far I have finished 2 levels "base" and "middle".
 
 WHAT SHOULD BE IMPROVED:
 
--add modal windows instead of alerts
--add more styling, so it will look great
--responsivnes
--add "advanced" level
+1) add modal windows instead of alerts
+2) add more styling, so it will look great
+3) responsivnes
+4) add "advanced" level
 
 INSTRUCTIONS:
 
