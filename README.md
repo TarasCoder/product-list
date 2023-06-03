@@ -1,6 +1,5 @@
 Link to the deployed project: https://cart-project-5abcb.web.app/
 
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 OVERWIEW:
 
 So far I have finished 2 levels "base" and "middle".
@@ -21,7 +20,6 @@ So far I have finished 2 levels "base" and "middle".
 -you can not send data to database when the inputs are not set;
 -after order is sent, all fields, price, and cart are cleared;
 
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 WHAT SHOULD BE IMPROVED:
 
 -add modal windows instead of alerts
@@ -29,7 +27,6 @@ WHAT SHOULD BE IMPROVED:
 -responsivnes
 -add "advanced" level
 
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 INSTRUCTIONS:
 
 1) DEPLOYING to firebase instructions:
@@ -48,7 +45,6 @@ from here: https://github.com/coreui/coreui-react/issues/55
 2) To run project locally download files, install dependencies "npm i", and run project using "npm run dev"
 
 
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 REACT AUTO NOTES
 # Getting Started with Create React App
 
